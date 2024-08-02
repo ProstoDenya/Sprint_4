@@ -1,4 +1,4 @@
-package main.java.ru.scooter.praktikum;
+package ru.scooter.praktikum;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import ru.scooter.praktikum.MainPage;
 import ru.scooter.praktikum.OrderPage;
 
+import static org.junit.Assert.assertTrue;
 import static ru.scooter.praktikum.MainPage.CENTRAL_ORDER_BUTTON;
 import static ru.scooter.praktikum.MainPage.HEAD_ORDER_BUTTON;
 
@@ -61,6 +62,12 @@ public class ScooterWebTestParameterized {
         OrderPage orderPage = new OrderPage(driver);
         orderPage.inputFirstOrderPageAndGo(name, lastName, street, telephone );
         orderPage.inputSecondOrderPage(comment);
+        orderPage.clickCompleteButton();
+        orderPage.clickCompleteButton();
+
+        PopUpWindow popUpWindow = new PopUpWindow(driver);
+
+        assertTrue(popUpWindow.headerGetAfterOrder().contains(expectedHeader));
     }
 
     @After
