@@ -8,6 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.scooter.praktikum.MainPage;
 import ru.scooter.praktikum.OrderPage;
+import ru.scooter.praktikum.OrderWindow;
+
+import static org.junit.Assert.assertTrue;
 
 
 public class ScooterWebTest{
@@ -40,6 +43,12 @@ public class ScooterWebTest{
         OrderPage orderPage = new OrderPage(driver);
         orderPage.inputFirstOrderPageAndGo("Роман","Иванов", "Молодежная", "79857543896" );
         orderPage.inputSecondOrderPage("комментарий");
+        orderPage.clickCompleteButton();
+        orderPage.clickCompleteButton();
+
+        OrderWindow OrderWindow = new OrderWindow(driver);
+
+        assertTrue(OrderWindow.headerGetAfterOrder().contains("Заказ оформлен"));
     }
 
     @After

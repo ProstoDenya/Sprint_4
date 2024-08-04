@@ -9,19 +9,17 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.scooter.praktikum.MainPage;
-import ru.scooter.praktikum.OrderPage;
-
 
 
 @RunWith(Parameterized.class)
 public class FAQTestParameterized {
     private WebDriver driver;
-    private final String question;
-    private final String answer;
+    private final String QUESTION;
+    private final String ANSWER;
 
     public FAQTestParameterized(String question, String answer){
-        this.question = question;
-        this.answer = answer;
+        this.QUESTION = question;
+        this.ANSWER = answer;
     }
 
     @Parameterized.Parameters
@@ -60,8 +58,8 @@ public class FAQTestParameterized {
     public void checkQuestionsText(){
         MainPage mainPage = new MainPage(driver);
         mainPage.scrollDown();
-        mainPage.clickQuestion(question);
-        mainPage.verifyAnswer(answer);
+        mainPage.clickQuestion(QUESTION);
+        mainPage.verifyAnswer(ANSWER);
     }
 
     @After

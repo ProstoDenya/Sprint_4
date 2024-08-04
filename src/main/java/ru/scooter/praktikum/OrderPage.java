@@ -9,19 +9,19 @@ import java.time.format.DateTimeFormatter;
 public class OrderPage {
     private final WebDriver driver;
 
-    private final static By inputOrderName = By.xpath(".//input[@placeholder='* Имя']");
-    private final static By inputOrderLastName = By.xpath(".//input[@placeholder='* Фамилия']");
-    private final static By inputOrderAddress = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
-    private final static By inputOrderMetro = By.xpath(".//input[@placeholder='* Станция метро']");
-    private final static By inputOrderTel = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
+    private final static By INPUT_ORDER_NAME = By.xpath(".//input[@placeholder='* Имя']");
+    private final static By INPUT_ORDER_LAST_NAME = By.xpath(".//input[@placeholder='* Фамилия']");
+    private final static By INPUT_ORDER_ADDRESS = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
+    private final static By INPUT_ORDER_METRO = By.xpath(".//input[@placeholder='* Станция метро']");
+    private final static By INPUT_ORDER_TEL = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
 
     private final static By CENTRAL_ORDER_BUTTON = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']"); //Кнопка "Заказать" в центре страницы
 
-    private final static By inputOrderDate = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
-    private final static By inputOrderCountDate = By.xpath(".//div[@class='Dropdown-placeholder']");
-    private final static By selectOrderCountDate = By.xpath(".//div[@class='Dropdown-menu']/div[2]");
-    private final static By inputOrderColour = By.id("black");
-    private final static By inputComment = By.xpath(".//input[@placeholder='Комментарий для курьера']");
+    private final static By INPUT_ORDER_DATE = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
+    private final static By INPUT_ORDER_COUNT_DATE = By.xpath(".//div[@class='Dropdown-placeholder']");
+    private final static By SELECT_ORDER_COUNT_DATE = By.xpath(".//div[@class='Dropdown-menu']/div[2]");
+    private final static By INPUT_ORDER_COLOUR = By.id("black");
+    private final static By INPUT_COMMENT = By.xpath(".//input[@placeholder='Комментарий для курьера']");
 
     private final static By COMPLETE_ORDER_BUTTON = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']"); // кнопка "Заказать" на странице "Про аренду"
     private final static By COMPLETE_ORDER_BUTTON_YES = By.xpath(".//div[@class='Order_Modal__YZ-d3']/div/button[@class='Button_Button__ra12g Button_Middle__1CSJM']"); //кнопка "Да" на поп-апе "Хотите оформить заказ?"
@@ -34,23 +34,23 @@ public class OrderPage {
     }
 
     public void inputName(String text){
-        driver.findElement(inputOrderName).sendKeys(text);
+        driver.findElement(INPUT_ORDER_NAME).sendKeys(text);
     }
     public void inputLastName(String text){
-        driver.findElement(inputOrderLastName).sendKeys(text);
+        driver.findElement(INPUT_ORDER_LAST_NAME).sendKeys(text);
     }
     public void inputOrderAddress(String text){
-        driver.findElement(inputOrderAddress).sendKeys(text);
+        driver.findElement(INPUT_ORDER_ADDRESS).sendKeys(text);
     }
     public void inputOrderMetro(int n){
-        driver.findElement(inputOrderMetro).click();
+        driver.findElement(INPUT_ORDER_METRO).click();
         for(int i = 0; i < n; i++) {
-            driver.findElement(inputOrderMetro).sendKeys(Keys.DOWN);
+            driver.findElement(INPUT_ORDER_METRO).sendKeys(Keys.DOWN);
         }
-        driver.findElement(inputOrderMetro).sendKeys(Keys.ENTER);
+        driver.findElement(INPUT_ORDER_METRO).sendKeys(Keys.ENTER);
     }
     public void inputOrderTel(String text){
-        driver.findElement(inputOrderTel).sendKeys(text);
+        driver.findElement(INPUT_ORDER_TEL).sendKeys(text);
     }
     public void clickCentralButton(){
         driver.findElement(CENTRAL_ORDER_BUTTON).click();
@@ -68,19 +68,19 @@ public class OrderPage {
     public void inputOrderDate(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String date = LocalDate.now().plusDays(3).format(formatter); // прибавляем три дня к текущей дате
-        driver.findElement(inputOrderDate).sendKeys(date);
-        driver.findElement(inputOrderDate).sendKeys(Keys.ENTER);
+        driver.findElement(INPUT_ORDER_DATE).sendKeys(date);
+        driver.findElement(INPUT_ORDER_DATE).sendKeys(Keys.ENTER);
     }
     public void inputOrderCountDate(){
-        driver.findElement(inputOrderCountDate).click();
-        driver.findElement(selectOrderCountDate).click();
+        driver.findElement(INPUT_ORDER_COUNT_DATE).click();
+        driver.findElement(SELECT_ORDER_COUNT_DATE).click();
     }
     public void inputOrderColour(){
-        driver.findElement(inputOrderColour).click();
+        driver.findElement(INPUT_ORDER_COLOUR).click();
     }
 
     public void inputComment(String text){
-        driver.findElement(inputComment).sendKeys(text);
+        driver.findElement(INPUT_COMMENT).sendKeys(text);
     }
     public void clickCompleteButton(){
         driver.findElement(COMPLETE_ORDER_BUTTON).click();
